@@ -24,6 +24,16 @@ public class StreamExample extends BaseStream {
 		System.out.println(filteredProductPriceList);
 		
 		/**
+		 * For each ordered - iterate elements in order specified by stream
+		 */
+		products.stream()
+				.forEachOrdered(p -> System.out.println(p.price));
+		
+		products.stream()
+				.map(p ->p.name)
+				.forEachOrdered(System.out::println);
+		
+		/**
 		 * Iterate a stream
 		 */
 		Stream.iterate(1, e->e+1)//initial val = 1, increment by 1
@@ -44,7 +54,7 @@ public class StreamExample extends BaseStream {
 				products.stream()
 				.map(p -> p.price)
 				.reduce(0.0f, Float::sum);
-		System.out.println(totalPrice);
+		System.out.println("totalPrice = " + totalPrice);
 		
 		/**
 		 * Summation
@@ -52,7 +62,17 @@ public class StreamExample extends BaseStream {
 		double totalPrice1 = 
 				products.stream()
 				.collect(Collectors.summingDouble(p->p.price));
-		System.out.println(totalPrice1);
+		System.out.println("totalPrice = " + totalPrice1);
+		
+		double averagePrice = 
+				products.stream()
+				.collect(Collectors.averagingDouble(p->p.price));
+		System.out.println("averagePrice = " + averagePrice);
+		
+		int sumOfIds = 
+				products.stream()
+				.collect(Collectors.summingInt(p->p.id));
+		System.out.println("sumOfIds = " + sumOfIds);
 		
 		/**
 		 * Finding max and min price
@@ -74,6 +94,10 @@ public class StreamExample extends BaseStream {
 		 */
 		long count = 
 				products.stream().count();
+		System.out.println(count);
+		
+		count = 
+				products.stream().collect(Collectors.counting());
 		System.out.println(count);
 		
 		/**

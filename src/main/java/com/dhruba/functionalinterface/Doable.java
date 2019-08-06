@@ -6,5 +6,10 @@ public interface Doable {
 	default void doIt() {
 		System.out.println("Do It Now");
 	}
+	
+	//static method
+	static void doMore() {
+		System.out.println("Do More");
+	}
 		
 }
