@@ -12,7 +12,7 @@ public class CollectorExample {
 	
 	public static void main(String[] args) {
 		
-		List<Person> people = StreamUtil.readFile();
+		List<Person> people = StreamUtil.readFile("people.txt");
 		//Stream<Person> peopleStream = people.stream();
 		
 		//Youngest person in list older than 20
