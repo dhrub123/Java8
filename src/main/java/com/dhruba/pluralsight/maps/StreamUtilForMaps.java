@@ -19,9 +19,8 @@ public class StreamUtilForMaps {
 			stream.map(line -> {
 				String[] s = line.split(" ");
 				Person p = new Person(Integer.parseInt(s[1].trim()), s[0].trim(), s[2].trim());
-				people.add(p);
 				return p;
-			}).forEach(System.out::println)
+			}).forEach(people::add)
 			;
 		} catch(IOException iex) {
 			System.out.println(iex);
