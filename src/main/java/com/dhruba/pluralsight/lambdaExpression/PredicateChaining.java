@@ -32,5 +32,33 @@ public class PredicateChaining {
 		Predicate<String> p2 = s -> s.length() > 10;
 		Predicate<String> p3 = p1.and(p2);
 		System.out.println(p3.test(testString));
+		
+		//Filter with a predicate and loop with a consumer
+		System.out.println("==================");
+		List<String> stringsToFilter = new ArrayList<String>();
+		stringsToFilter.add("one");stringsToFilter.add("two");stringsToFilter.add("three");
+		stringsToFilter.add("four");stringsToFilter.add("five");
+		Predicate<String> filter = (string) -> string.startsWith("t");
+		stringsToFilter.removeIf(filter);
+		
+		stringsToFilter.forEach(string -> System.out.println(string));
+		
+		System.out.println("==================");
+		Predicate<String> lengthCheckerLessThanTwenty = s -> s.length() < 20;
+		Predicate<String> lengthCheckerGreaterThanFive = s -> s.length() > 5;
+		Predicate<String> chainedAndPredicate = lengthCheckerLessThanTwenty
+											.and(lengthCheckerGreaterThanFive);
+		Predicate<String> chainedOrPredicate = lengthCheckerLessThanTwenty
+				.or(lengthCheckerGreaterThanFive);
+		System.out.println("Shorter than 20 characters = " + lengthCheckerLessThanTwenty.test("Pocha Dayita"));
+		
+		System.out.println(
+				"Shorter than 20 characters but greater than 5 characters = " + chainedAndPredicate.test("Pocha Dayita"));
+		System.out.println(
+				"Shorter than 20 characters or greater than 5 characters = " + chainedOrPredicate.test("Pocha Dayita"));
+		
+		//static predicate method
+		Predicate<String> stringEqualityComparator = Predicate.isEqual("Yes");
+		System.out.println("String equal ? " + stringEqualityComparator.test("No"));
 	}
 }
