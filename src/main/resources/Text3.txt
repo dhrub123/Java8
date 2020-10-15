@@ -1,0 +1,7 @@
+Artificial Intelligence is composed of two words Artificial and Intelligence, where Artificial defines "man-made," 
+and intelligence defines "thinking power", hence AI means "a man-made thinking power."
+
+So, we can define AI as:
+
+"It is a branch of computer science by which we can create intelligent machines which can behave like a human, think like humans, 
+and able to make decisions." 
